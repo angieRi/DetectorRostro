@@ -67,19 +67,13 @@ with detector.FaceDetection(min_detection_confidence= 0.75) as rostros: #min_det
                     #extraccion de pixeles
                     cara = frame[yi:yf, xi:xf]
 
-
-                    #extraer el punto central del rostro
-                    c_central_x = (xi + (xi + xf)) // 2
-                    c_central_y = (yi + (yi + yf)) // 2
-
                     #redimensionar las imagenes
                     cara = cv2.resize(cara, (150,200), interpolation=cv2.INTER_CUBIC)
 
                     #almacena imagenes de rostros
                     cv2.imwrite(carpeta + "/rostro_{}.jpg".format(contador), cara)
                     contador += 1
-                    #Mostrar coordenadas
-                    cv2.circle(frame, (c_central_x, c_central_x), 5, (255,0,255), cv2.FILLED)
+
 
         #mostramos el fotograma, detecta a 1 metro de camara
         cv2.imshow("Reconocimiento Facial", cara)
